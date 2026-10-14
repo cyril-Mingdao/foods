@@ -2216,6 +2216,14 @@
             z-index: 10000;
         }
 
+        /* 搶答答案：字級由 fitBuzzerAnswer() 依畫面自動調整，內層跟著縮放 */
+        .buzzer-answer, .buzzer-answer.long-text { overflow: visible !important; max-width: 96% !important; }
+        .buzzer-answer .answer-chinese,
+        .buzzer-answer .answer-taiwanese,
+        .buzzer-answer.long-text .answer-chinese,
+        .buzzer-answer.long-text .answer-taiwanese { font-size: 1em !important; }
+        .buzzer-answer .answer-taiwanese { margin-left: 0.4em; }
+        .buzzer-slide .buzzer-image { flex-shrink: 1; min-height: 0; }
     </style>
 </head>
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
@@ -2339,7 +2347,7 @@
             // Round 2
             { type: 'question', num: 6, chinese: '牛肉湯', taiwanese: 'gû-bah-thng', image: 'food04', question_taiwanese: '牛肉湯 gû-bah-thng', options: ['gû-bah-thng', 'gû-jio̍k-thng'], correct: 0 },
             { type: 'question', num: 7, chinese: '控肉飯', taiwanese: 'khòng-bah-pn̄g', image: 'food05', question_taiwanese: '炕肉飯 khòng-bah-pn̄g', options: ['kòng-bah-pn̄g', 'khòng-bah-pn̄g'], correct: 1 },
-            { type: 'question', num: 8, chinese: '海鮮粥', taiwanese: 'hái-sán-bê', image: 'food06', question_taiwanese: '海產糜 hái-sán-bê / hái-sán-muê / hái-sán-muâi', options: ['hái-sian-tsiok', 'hái-sán-bê'], correct: 1 },
+            { type: 'question', num: 8, chinese: '海鮮粥', taiwanese: 'hái-sán-bê', image: 'food06', question_taiwanese: '海產糜 hái-sán-muâi/bê/muê/bêr', options: ['hái-sian-tsiok', 'hái-sán-bê'], correct: 1 },
             { type: 'buzzer', num: 9, chinese: '滷味', taiwanese: 'lóo-bī / 滷味', image: 'food01' },
             { type: 'buzzer', num: 10, chinese: '控肉飯', taiwanese: 'khòng-bah-pn̄g / 炕肉飯', image: 'food05' },
             // Round 3
@@ -2415,7 +2423,7 @@
             { type: 'buzzer', num: 69, chinese: '芒果冰', taiwanese: 'suāinn-á tshuah-ping / 檨仔礤冰', image: 'food38' },
             { type: 'buzzer', num: 70, chinese: '蝦捲', taiwanese: 'hê-kńg / 蝦捲', image: 'food42' },
             // Round 15
-            { type: 'question', num: 71, chinese: '棺材板', taiwanese: 'kuann-tshâ-pang', image: 'food44', question_taiwanese: '棺材板 kuann-tshâ-pang', options: ['kuann-tshâ-pang', 'kuan-tsâi-pán'], correct: 0 },
+            { type: 'question', num: 71, chinese: '棺材板', taiwanese: 'kuann-tshâ-pang', image: 'food44', question_taiwanese: '棺柴枋 kuann-tshâ-pang', options: ['kuann-tshâ-pang', 'kuan-tsâi-pán'], correct: 0 },
             { type: 'question', num: 72, chinese: '碗粿', taiwanese: 'uánn-kué', image: 'food45', question_taiwanese: '碗粿 uánn-kué / uánn-ké', options: ['uánn-kué', 'uán-kué'], correct: 0 },
             { type: 'question', num: 73, chinese: '杏仁豆腐', taiwanese: 'hīng-jîn tāu-hū', image: 'food46', question_taiwanese: '杏仁豆腐 hīng-jîn tāu-hū', options: ['hīng-jîn tāu-hū', 'hīnn-jîn tāu-hū'], correct: 0 },
             { type: 'buzzer', num: 74, chinese: '鱔魚意麵', taiwanese: 'siān-hî ì-mī / 鱔魚意麵', image: 'food41' },
@@ -2424,7 +2432,7 @@
             { type: 'question', num: 76, chinese: '番茄切盤', taiwanese: 'tāu-iû thoo-má-tooh', image: 'food47', question_taiwanese: '豆油thoo-má-tooh tāu-iû thoo-má-tooh', options: ['tāu-iû thoo-má-tooh', 'tāu-iû huan-kiô'], correct: 0 },
             { type: 'question', num: 77, chinese: '筒仔米糕', taiwanese: 'tâng-á bí-ko', image: 'food48', question_taiwanese: '筒仔米糕 tâng-á bí-ko', options: ['tang-á bí-ko', 'tâng-á bí-ko'], correct: 1 },
             { type: 'question', num: 78, chinese: '石板烤肉', taiwanese: 'tsio̍h-pang hang-bah', image: 'food49', question_taiwanese: '石板烘肉 tsio̍h-pang hang-bah', options: ['tsio̍h-pán khó-bah', 'tsio̍h-pang hang-bah'], correct: 1 },
-            { type: 'buzzer', num: 79, chinese: '棺材板', taiwanese: 'kuann-tshâ-pang / 棺材板', image: 'food44' },
+            { type: 'buzzer', num: 79, chinese: '棺材板', taiwanese: 'kuann-tshâ-pang / 棺柴枋', image: 'food44' },
             { type: 'buzzer', num: 80, chinese: '筒仔米糕', taiwanese: 'tâng-á bí-ko / 筒仔米糕', image: 'food48' },
             // Round 17
             { type: 'question', num: 81, chinese: '山苦瓜炒蛋', taiwanese: 'suann-khóo-kue tshá nn̄g', image: 'food50', question_taiwanese: '山苦瓜炒卵 suann-khóo-kue tshá nn̄g', options: ['suann-khóo-kue tshá tàn', 'suann-khóo-kue tshá nn̄g'], correct: 1 },
@@ -2439,7 +2447,7 @@
             { type: 'buzzer', num: 89, chinese: '山苦瓜炒蛋', taiwanese: 'suann-khóo-kue tshá nn̄g / 山苦瓜炒卵', image: 'food50' },
             { type: 'buzzer', num: 90, chinese: '糖葫蘆', taiwanese: 'lí-á-tshiám / 李仔攕', image: 'food54' },
             // Round 19
-            { type: 'question', num: 91, chinese: '虱目魚粥', taiwanese: 'sat-ba̍k-hî muâi', image: 'food56', question_taiwanese: '虱目魚糜 sat-ba̍k-hî muâi', options: ['sat-bo̍k-hî muâi', 'sat-ba̍k-hî muâi'], correct: 1 },
+            { type: 'question', num: 91, chinese: '虱目魚粥', taiwanese: 'sat-ba̍k-hî muâi', image: 'food56', question_taiwanese: '虱目魚糜 sat-ba̍k-hî muâi/bê/muê/bêr', options: ['sat-bo̍k-hî muâi', 'sat-ba̍k-hî muâi'], correct: 1 },
             { type: 'question', num: 92, chinese: '甜不辣', taiwanese: 'thia̋n-pú-lah', image: 'food57', question_taiwanese: 'thia̋n-pú-lah', options: ['thinn-put-luah', 'thia̋n-pú-lah'], correct: 1 },
             { type: 'question', num: 93, chinese: '大腸包小腸', taiwanese: 'tsu̍t-bí-tn̂g ian-tshiâng', image: 'food58', question_taiwanese: '秫米腸煙腸 tsu̍t-bí-tn̂g ian-tshiâng<br>大腸敆小腸 tuā-tn̂g kap sió-tn̂g', options: ['tuā-tn̂g pau sió-tn̂g', 'tsu̍t-bí-tn̂g ian-tshiâng'], correct: 1 },
             { type: 'buzzer', num: 94, chinese: '麻糬', taiwanese: 'muâ-tsî / 麻糍', image: 'food53' },
@@ -2448,7 +2456,7 @@
             { type: 'question', num: 96, chinese: '排骨酥麵', taiwanese: 'pâi-kut-soo-mī', image: 'food59', question_taiwanese: '排骨酥麵 pâi-kut-soo-mī', options: ['pâi-kut-su-mī', 'pâi-kut-soo-mī'], correct: 1 },
             { type: 'question', num: 97, chinese: '四神湯', taiwanese: 'sù-sîn ti-tōo-thng', image: 'food60', question_taiwanese: '四神豬肚湯 sù-sîn ti-tōo-thng', options: ['sù-sîn ti-tóo-thng', 'sù-sîn ti-tōo-thng'], correct: 1 },
             { type: 'question', num: 98, chinese: '水煎包', taiwanese: 'tsian-pau', image: 'food61', question_taiwanese: '煎包 tsian-pau', options: ['tsuí-tsian-pau', 'tsian-pau'], correct: 1 },
-            { type: 'buzzer', num: 99, chinese: '虱目魚粥', taiwanese: 'sat-ba̍k-hî muâi / 虱目魚糜', image: 'food56' },
+            { type: 'buzzer', num: 99, chinese: '虱目魚粥', taiwanese: 'sat-ba̍k-hî muâi/bê/muê/bêr / 虱目魚糜', image: 'food56' },
             { type: 'buzzer', num: 100, chinese: '四神湯', taiwanese: 'sù-sîn ti-tōo-thng / 四神豬肚湯', image: 'food60' },
             // Round 21
             { type: 'question', num: 101, chinese: '愛玉', taiwanese: 'ò-giô', image: 'food62', question_taiwanese: '薁蕘 ò-giô<br>子仔 tsí-á', options: ['ò-giô', 'ài-gio̍k'], correct: 0 },
@@ -2779,6 +2787,8 @@
                 answer.classList.add('visible');
                 // 自動調整字體大小以維持單行顯示
                 adjustFontSize(answer);
+                // 淡入動畫結束後依最終位置再調一次
+                answer.addEventListener('animationend', () => fitBuzzerAnswer(answer), { once: true });
             }
             const container = document.querySelector(`#slide${slideIndex} .buzzer-image-container`);
             if (container) {
@@ -2788,19 +2798,48 @@
         }
         
         function adjustFontSize(element) {
-            const container = element.parentElement;
-            const maxWidth = container.offsetWidth * 0.95;
-            let fontSize = 40; // 起始字體大小 (px)
-            const minFontSize = 12; // 最小字體大小
-            
-            element.style.fontSize = fontSize + 'px';
-            element.style.display = 'inline-block';
-            
-            while (element.scrollWidth > maxWidth && fontSize > minFontSize) {
-                fontSize -= 1;
-                element.style.fontSize = fontSize + 'px';
-            }
+            fitBuzzerAnswer(element);
         }
+
+        // 讓搶答答案完整落在畫面內：先縮字維持單行，不夠再縮圖片，最後才換行
+        function fitBuzzerAnswer(answer) {
+            if (!answer || !answer.classList.contains('visible')) return;
+            const slide = answer.closest('.buzzer-slide');
+            const img = slide ? slide.querySelector('.buzzer-image') : null;
+            const limitBottom = () => {
+                let limit = slide.getBoundingClientRect().bottom - 8;
+                ['.nav-buttons', '#pageNumber'].forEach(sel => {
+                    const el = document.querySelector(sel);
+                    if (el && el.getClientRects().length) limit = Math.min(limit, el.getBoundingClientRect().top - 8);
+                });
+                return limit;
+            };
+            const fitsWidth = () => answer.scrollWidth <= answer.clientWidth + 1;
+            const fitsHeight = () => answer.getBoundingClientRect().bottom <= limitBottom();
+
+            const maxFont = Math.max(16, Math.min(44, window.innerHeight * 0.06));
+            const minFont = 14;
+            let font = maxFont;
+            answer.style.whiteSpace = 'nowrap';
+            answer.style.fontSize = font + 'px';
+            if (img) img.style.height = '';
+
+            // 1) 縮字讓單行寬度放得下（不小於 22px）
+            while (!fitsWidth() && font > 22) { font--; answer.style.fontSize = font + 'px'; }
+            // 2) 寬度仍不夠就允許換行
+            if (!fitsWidth()) answer.style.whiteSpace = 'normal';
+            // 3) 高度超出：先縮圖片，再縮字
+            if (img) {
+                let h = img.getBoundingClientRect().height;
+                const minH = window.innerHeight * 0.18;
+                while (!fitsHeight() && h > minH) { h -= 8; img.style.height = h + 'px'; }
+            }
+            while ((!fitsHeight() || !fitsWidth()) && font > minFont) { font--; answer.style.fontSize = font + 'px'; }
+        }
+
+        window.addEventListener('resize', () => {
+            document.querySelectorAll('.slide.active .buzzer-answer.visible').forEach(fitBuzzerAnswer);
+        });
 
         function startTimer() {
             const timer = document.getElementById('timer');
@@ -2848,6 +2887,7 @@
                 currentSlide = index;
                 updateProgress();
                 updateNavButtons();
+                targetSlide.querySelectorAll('.buzzer-answer.visible').forEach(fitBuzzerAnswer);
             }
         }
 
