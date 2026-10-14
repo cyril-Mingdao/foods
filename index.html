@@ -2740,6 +2740,7 @@
             options.parentElement.querySelector('.cover-block').style.display = 'none';
             playSound('countdown');
             startTimer();
+            document.querySelectorAll(`#slide${slideIndex} .answer-cover.revealed`).forEach(fitAnswerCover);
         }
 
         function selectOption(slideIndex, selected, correct) {
@@ -2772,12 +2773,47 @@
         
         function revealAnswer(element) {
             element.classList.add('revealed');
+            fitAnswerCover(element);
         }
+
+        // 題目頁藍底黃字答案：依畫面放大，單行放不下先縮字、再換行，不超出版面
+        function fitAnswerCover(cover) {
+            if (!cover || !cover.classList.contains('revealed')) return;
+            const content = cover.querySelector('.answer-cover-content');
+            const card = cover.closest('.question-slide');
+            const left = cover.closest('.question-left');
+            if (!content || !card || !left) return;
+            const limitBottom = () => {
+                let limit = card.getBoundingClientRect().bottom - 8;
+                ['.nav-buttons', '#pageNumber'].forEach(sel => {
+                    const el = document.querySelector(sel);
+                    if (el && el.getClientRects().length) limit = Math.min(limit, el.getBoundingClientRect().top - 8);
+                });
+                return limit;
+            };
+            const leftBottom = () => Math.max(...[...left.children].map(c => c.getBoundingClientRect().bottom));
+            const fitsWidth = () => content.scrollWidth <= content.clientWidth + 1;
+            const fitsHeight = () => leftBottom() <= limitBottom();
+
+            const maxFont = Math.max(18, Math.min(48, window.innerHeight * 0.06, cover.clientWidth / 9));
+            const minFont = 14;
+            let font = maxFont;
+            content.style.whiteSpace = 'nowrap';
+            content.style.fontSize = font + 'px';
+            while (!fitsWidth() && font > 20) { font--; content.style.fontSize = font + 'px'; }
+            if (!fitsWidth()) content.style.whiteSpace = 'normal';
+            while ((!fitsWidth() || !fitsHeight()) && font > minFont) { font--; content.style.fontSize = font + 'px'; }
+        }
+
+        window.addEventListener('resize', () => {
+            document.querySelectorAll('.slide.active .answer-cover.revealed').forEach(fitAnswerCover);
+        });
         
         function revealAnswerInBox(speechBox) {
             const answerCover = speechBox.querySelector('.answer-cover');
             if (answerCover) {
                 answerCover.classList.add('revealed');
+                fitAnswerCover(answerCover);
             }
         }
 
@@ -2888,6 +2924,7 @@
                 updateProgress();
                 updateNavButtons();
                 targetSlide.querySelectorAll('.buzzer-answer.visible').forEach(fitBuzzerAnswer);
+                targetSlide.querySelectorAll('.answer-cover.revealed').forEach(fitAnswerCover);
             }
         }
 
